@@ -6,15 +6,15 @@
 // Directions:
 //  1. Rename this file, substituting "yourname" with your name
 //  2. Replace "yourname" with your name in the variable below
-exports.name = "yourname";
+exports.name = "taylor";
 //  3. Add optimizations to the solution below
 //  4. Upload your optimized solution 
 
 
 isPalindrome = (num) => {
     // determine if input value matches it's reversed value (i.e. check if it's a palindrome!)
-    strNum = num.toString();
-    return strNum === strNum.split("").reverse().join("");
+    num = '' + num;
+    return num === num.split("").reverse().join("");
 }
 
 
@@ -23,24 +23,23 @@ exports.getLargestPalindrome = (N) => {
     let largestPalindrome = 0;
 
     // iterate through range of multiplicands
-    for (let i = 10 ** (N - 1); i < 10 ** N; i++) {
-        for (let j = 10 ** (N - 1); j < 10 ** N; j++) {
-
+    for (let i = 999; i > 100; i--) {
+        for (let j = i; j > 100; j--) {
+            
             // check if the product is a palindrome
-            if (isPalindrome(i * j)) {
-
-                // check if it's larger than our largest palindrome
-                if (i * j > largestPalindrome) {
-                    
-                    // update largest palindrome
-                    largestPalindrome = i * j;
-                }
+            let mul = j * i;
+            
+            // check if it's larger than our largest palindrome
+            if (isPalindrome(mul) && mul > largestPalindrome) {
+                
+                // update largest palindrome
+                largestPalindrome = i * j;
             }
         }
     }
 
     // return result
-    return largestPalidrome;
+    return largestPalindrome;
 }
 
 // input
